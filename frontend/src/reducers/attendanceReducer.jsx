@@ -8,6 +8,7 @@ import {
   ATTENDANCE_ANALYSIS_RESET,
   ATTENDANCE_ANALYSIS_SUCCESS,
   ATTENDANCE_DELETE_REQUEST,
+  ATTENDANCE_DELETE_RESET,
   ATTENDANCE_DELETE_SUCCESS,
   ATTENDANCE_DELETE_FAIL,
 } from "../constants/attendanceConstant";
@@ -61,7 +62,7 @@ export const deleteAttendanceReducer = (state = {}, action) => {
       };
     case ATTENDANCE_DELETE_FAIL:
       return { loading: false, error: action.payload };
-    case ATTENDANCE_ANALYSIS_RESET:
+    case ATTENDANCE_DELETE_RESET:
       return {};
 
     default:

@@ -5,12 +5,13 @@ import { LinkContainer } from "react-router-bootstrap";
 import SearchBox from "./searchBox";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userActions";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const Header = ({ history }) => {
+const Header = () => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
+  const history=useHistory();
   const logoutHandler = () => {
     dispatch(logout());
     history.push("/login");
@@ -24,7 +25,7 @@ const Header = ({ history }) => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Route render={({ history }) => <SearchBox history={history} />} />
+            <SearchBox/>
             <Nav className="ml-auto">
               <NavDropdown title="More">
                 <LinkContainer to="/attendance">

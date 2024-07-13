@@ -28,7 +28,6 @@ const UserEditView = ({ match, history }) => {
   } = userUpdate;
 
   useEffect(() => {
-    console.log(userId);
     if (successUpdate) {
       dispatch({ type: USER_UPDATE_RESET });
       history.push("/userList");

@@ -27,8 +27,7 @@ const ProfileView = ({ history }) => {
     if (!userInfo) {
       history.push("/login");
     } else {
-      if (!user || !user.name || success) {
-        dispatch({ type: USER_UPDATE_PROFILE_RESET });
+      if (!user || !user.name ) {
         dispatch(getUserDetails("profile"));
       } else {
         setName(user.name);
@@ -45,7 +44,6 @@ const ProfileView = ({ history }) => {
       dispatch(updateUserProfile({ id: user._id, name, email, password }));
     }
   };
-
   return (
     <Row>
       <Col md={3}>
@@ -65,7 +63,7 @@ const ProfileView = ({ history }) => {
                 type="name"
                 placeholder="Enter name"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {dispatch({ type: USER_UPDATE_PROFILE_RESET });setName(e.target.value);}}
               ></Form.Control>
             </Form.Group>
 
@@ -75,7 +73,7 @@ const ProfileView = ({ history }) => {
                 type="email"
                 placeholder="Enter email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {dispatch({ type: USER_UPDATE_PROFILE_RESET });setEmail(e.target.value);}}
               ></Form.Control>
             </Form.Group>
 
@@ -85,7 +83,7 @@ const ProfileView = ({ history }) => {
                 type="password"
                 placeholder="Enter password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {dispatch({ type: USER_UPDATE_PROFILE_RESET });setPassword(e.target.value);}}
               ></Form.Control>
             </Form.Group>
 
@@ -95,7 +93,7 @@ const ProfileView = ({ history }) => {
                 type="password"
                 placeholder="Confirm password"
                 value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                onChange={(e) => {dispatch({ type: USER_UPDATE_PROFILE_RESET });setConfirmPassword(e.target.value);}}
               ></Form.Control>
             </Form.Group>
 

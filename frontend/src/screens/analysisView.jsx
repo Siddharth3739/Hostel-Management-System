@@ -16,10 +16,7 @@ const AnalysisView = () => {
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
   const [days, setDays] = useState(0);
-  const [idList, setIdList] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
-  const attendanceAnalysis = useSelector((state) => state.attendanceAnalysis);
-  const { attendance } = attendanceAnalysis;
   const attendanceDelete = useSelector((state) => state.attendanceDelete);
   const {
     loading: loadingDelete,
@@ -27,17 +24,8 @@ const AnalysisView = () => {
     error: errorDelete,
   } = attendanceDelete;
   useEffect(() => {
-    if (attendance) {
-      var temp = idList;
-      Object.entries(attendance.details).map((at) => {
-        temp.push(at[0]);
-      });
-
-      setIdList(temp);
-    } else {
       dispatch(getAnalysisByDate(startDate.toString().substring(0, 15)));
-    }
-  }, [attendance, dispatch]);
+  }, [startDate, dispatch]);
 
   const changeDate = (date) => {
     dispatch(getAnalysisByDate(date.toString().substring(0, 15)));
@@ -91,7 +79,7 @@ const AnalysisView = () => {
             <Modal.Title>Enter Number of days before to delete</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
+              <Form>
               <Form.Group controlId="days">
                 <Form.Label>Enter no of days</Form.Label>
                 <Form.Control
@@ -101,7 +89,7 @@ const AnalysisView = () => {
                   onChange={(e) => setDays(e.target.value)}
                 ></Form.Control>
               </Form.Group>
-            </Form>
+              </Form>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={closeModal}>

@@ -108,7 +108,7 @@ const AddStudentView = () => {
             <h1>{isEdit ? "Edit Student" : "Add Student"}</h1>
             {loading && <Loading />}
             {error && <Message variant="danger">{error}</Message>}
-            <Form onSubmit={submitHandler}></Form>
+            <Form onSubmit={submitHandler}>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -207,6 +207,7 @@ const AddStudentView = () => {
             <Button type="submit" variant="primary" onClick={submitHandler}>
               {isEdit ? "Update" : "Add Student"}
             </Button>
+            </Form>
           </FormContainer>
         </>
       )}

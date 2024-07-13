@@ -13,7 +13,6 @@ import AttendanceView from "./screens/attendanceView";
 import ProfileView from "./screens/profileView";
 import UserListView from "./screens/userListView";
 import UserEditView from "./screens/userEditView";
-
 const App = () => {
   return (
     <Router>
